@@ -7,21 +7,33 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST-Controller für Benutzerverwaltung.
+ * Ermöglicht das Erstellen und Abrufen von Benutzerdaten.
+ */
 @RestController
 @RequestMapping("users")
 public class UsersController {
-    @Autowired
+
+    @Autowired // Automatische Injektion des UsersService
     UsersService usersService;
 
+    /**
+     * Erstellt einen neuen Benutzer.
+     * @param usersCreateDTO Das DTO mit den Benutzerdaten.
+     * @return Die erstellten Benutzerdetails als UsersShowDetailDTO.
+     */
     @PostMapping("")
     public UsersShowDetailDTO createUser(@RequestBody UsersCreateDTO usersCreateDTO) {
-        UsersShowDetailDTO users = usersService.createUser(usersCreateDTO);
-        return users;
+        return usersService.createUser(usersCreateDTO);
     }
 
+    /**
+     * Ruft eine Liste aller Benutzer ab.
+     * @return Eine Liste mit Benutzerdetails als UsersShowDetailDTO.
+     */
     @GetMapping("")
     public List<UsersShowDetailDTO> getAllUsers() {
         return usersService.getAllUsers();
     }
-
 }
