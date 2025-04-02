@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/product_manager
+    username: root
+    password: Admin123
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  flyway:
+    url: jdbc:mariadb://localhost:3306/product_manager
+    schemas: product_manager
+    user: "root"
+    password: "Admin123"
